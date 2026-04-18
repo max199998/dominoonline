@@ -80,17 +80,17 @@
 
     <p>
       🎊🎉 PARABÉNS 🎉🎊<br><br>
-      Você acaba de ganahr uma carrada de piroca 😂
+      Você acaba de ganhar uma carrada de piroca 😂
     </p>
 
-    <img src="macaco.jpg" alt="macaco">
+    <img src="macaco.jpg" alt="macaco" style="width: 180px; max-width: 100%; border-radius: 12px; margin-top: 16px;">
 
     <br>
     <button id="btnFuja">clique aqui pra sair</button>
 
-    <audio id="som" preload="auto">
-      <source src="som.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="som" autoplay loop>
+  <source src="som.mp3" type="audio/mpeg">
+</audio>
   </div>
 
   <script>
@@ -101,7 +101,13 @@
     function tocarSom() {
       som.play().catch(() => {});
     }
+// tenta tocar sozinho
+  window.addEventListener("load", tocarSom);
 
+  // toca no primeiro toque (funciona no celular)
+  document.addEventListener("click", tocarSom, { once: true });
+  document.addEventListener("touchstart", tocarSom, { once: true });
+    
     function vibrar() {
       if (navigator.vibrate) {
         navigator.vibrate([200, 100, 200, 100, 300]);
